@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">GPS-coordinate-determiner</string>
+    <string name="app_name" translatable="false">GPS-coordinate-determiner</string>
+    <string name="to_determine_the_location">To determine the location</string>
 </resources>
