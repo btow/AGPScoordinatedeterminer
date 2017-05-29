@@ -20,6 +20,34 @@ import com.example.samsung.gps_coordinate_determiner.presentation.view.main.Main
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * The class {@code MainActivity} enables the application to interact
+ * with the operating system Android. The class extended
+ * the class {@code MvpAppCompatActivity} and implemented
+ * the interface {@code MainView}
+ * <p>
+ * <p>Created by
+ *
+ * @author Vladimir Bobkov
+ *         on 26.05.2017</p>
+ *         <p>
+ *         </p>Contains the following fields:</p>
+ *         <ul>
+ *         <li></p>{@code TAG} - A string constant contains a tag log</p></li>
+ *         <li><p>{@code mMainPresenter} - The field binding of this activity to the presenter {@code MainPresenter}</p></li>
+ *         <li><p>{@code btnDetCoord} - The field binding of this activity to the {@code Button}</p></li>
+ *         <li><p>{@code tvInfo} - The field binding of this activity to the {@code TextView}</p></li>
+ *         </ul>
+ *         <p>
+ *         <p>Contains the following methods:</p>
+ *         <ul>
+ *         <li><p>{@code getIntent} - </p></li>
+ *         <li><p>{@code onCreate} - </p></li>
+ *         <li><p>{@code onCreateOptionsMenu} - </p></li>
+ *         <li><p>{@code onOptionsItemSelected} - </p></li>
+ *         <li><p>{@code setInfo} - </p></li>
+ *         </ul>
+ */
 public class MainActivity extends MvpAppCompatActivity implements MainView {
 
     public static final String TAG = "MainActivity";
@@ -30,8 +58,6 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
     Button btnDetCoord;
     @BindView(R.id.tvInfo)
     TextView tvInfo;
-
-    private LocationManager locationManager;
 
     public static Intent getIntent(final Context context) {
         Intent intent = new Intent(context, MainActivity.class);

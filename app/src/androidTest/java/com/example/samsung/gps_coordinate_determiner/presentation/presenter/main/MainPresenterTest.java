@@ -20,7 +20,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by samsung on 29.05.2017.
+ * Created by
+ * @autor Vladimir Bokov
+ * on 29.05.2017.
  */
 
 @SuppressWarnings("deprecation")

@@ -15,6 +15,40 @@ import com.example.samsung.gps_coordinate_determiner.presentation.view.main.Main
 
 import static android.content.Context.LOCATION_SERVICE;
 
+/**
+ * The class implements the logic for processing commands received
+ * from the activity {@code MainActivity}. The class extended
+ * of the class {@code MvpPresenter<MainView>}.
+ * <p>
+ * <p>Created by
+ *
+ * @author Vladimir Bobkov
+ *         on 26.05.2017</p>
+ *         <p>
+ *         </p>Contains the following fields:</p>
+ *         <ul>
+ *         <li><p>{@code locationManager}
+ *         - The field contains a link to an instance class {@code LocationManager}</p></li>
+ *         <li><p>{@code mCxtView}
+ *         - The field contains a link to an instance class {@code Context}</p></li>
+ *         <li><p>{@code mLocationListener}
+ *         - The field contains a reference to an instance of the inner class {@code LocationListener}</p>
+ *         <p>This class implemented a interface {@code LocationListener}
+ *         and contains the following methods:</p>
+ *         <ul>
+ *         <li><p>{@code onLocationChanged} - </p></li>
+ *         <li><p>{@code onStatusChanged} - </p></li>
+ *         <li><p>{@code onProviderEnabled} - </p></li>
+ *         <li><p>{@code onProviderDisabled} - </p></li>
+ *         </ul>
+ *         </ul>
+ *         <p>Contains the following methods:</p>
+ *         <ul>
+ *         <li><p>{@code onClickBtn} - to handle the event {@code Button}</p></li>
+ *         <li><p>{@code getStringLocation} - to obtain the string from
+ *         an instance of the class {@code location}</p></li>
+ *         </ul>
+ */
 @InjectViewState
 public class MainPresenter extends MvpPresenter<MainView> {
 
@@ -32,7 +66,6 @@ public class MainPresenter extends MvpPresenter<MainView> {
             if (location.getProvider().equals(LocationManager.GPS_PROVIDER)) {
                 getViewState().setInfo(getStringLocation(location));
             }
-
         }
 
         @Override
@@ -100,7 +133,4 @@ public class MainPresenter extends MvpPresenter<MainView> {
                 accuracy);
     }
 
-    public Context getmCxtView() {
-        return mCxtView;
-    }
 }
