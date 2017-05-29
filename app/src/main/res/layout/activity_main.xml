@@ -8,13 +8,14 @@
         android:id="@+id/tvInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=""/>
+        android:text=""
+        android:textSize="24sp"/>
 
     <Button
         android:id="@+id/btnDetCoord"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/to_determine_the_location"
-        android:onClick="onClickBtn"/>
+        android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>

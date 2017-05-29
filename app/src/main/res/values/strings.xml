@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name" translatable="false">GPS-coordinate-determiner</string>
     <string name="to_determine_the_location">To determine the location</string>
+    <string name="system_is_not_available">The positioning system is not available</string>
+    <string name="location_is_not_defined">The location is not defined</string>
+    <string name="given_accuracy_is_impossible">To achieve a given accuracy is impossible</string>
+    <string name="position_coordinates">The position coordinates:</string>
+    <string name="lat">lat.</string>
+    <string name="lon">lon.</string>
+    <string name="accuracy">accuracy(m.)</string>
+    <string name="settings">Settings</string>
 </resources>

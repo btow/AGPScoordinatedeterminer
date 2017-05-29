@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="to_determine_the_location">Определить местоположение</string>
+    <string name="system_is_not_available">Система определения местоположения не доступна</string>
+    <string name="given_accuracy_is_impossible">Достижение заданной точности невозможно</string>
+    <string name="lat">Шир.</string>
+    <string name="lon">Долг.</string>
+    <string name="position_coordinates">Координаты положения</string>
+    <string name="accuracy">точность(м.)</string>
+    <string name="settings">Настройки</string>
 </resources>

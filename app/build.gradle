@@ -19,14 +19,25 @@ android {
     }
 }
 
+def support = '25.3.1'
+def moxy = '1.5.3'
+def butterKnife = "8.4.0"
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:support-v4:25.3.1'
-    compile 'com.arello-mobile:moxy:1.5.3'
-    compile 'com.arello-mobile:moxy-app-compat:1.5.3'
+    compile "com.android.support:appcompat-v7:$support"
+    compile "com.android.support:support-v4:$support"
+
+    compile "com.arello-mobile:moxy:$moxy"
+    compile "com.arello-mobile:moxy-app-compat:$moxy"
+    annotationProcessor "com.arello-mobile:moxy-compiler:$moxy"
+
+    compile "com.jakewharton:butterknife:$butterKnife"
+
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnife"
+
     testCompile 'junit:junit:4.12'
 }
