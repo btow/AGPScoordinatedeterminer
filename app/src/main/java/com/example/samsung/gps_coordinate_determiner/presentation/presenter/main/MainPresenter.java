@@ -19,14 +19,14 @@ import static android.content.Context.LOCATION_SERVICE;
 public class MainPresenter extends MvpPresenter<MainView> {
 
     private LocationManager mLocationManager;
-    private Context mCtx;
+    private Context mCxtView;
     private LocationListener mLocationListener = new LocationListener() {
 
         @Override
         public void onLocationChanged(Location location) {
 
             if (location == null) {
-                getViewState().setInfo(mCtx.getString(R.string.location_is_not_defined));
+                getViewState().setInfo(mCxtView.getString(R.string.location_is_not_defined));
                 return;
             }
             if (location.getProvider().equals(LocationManager.GPS_PROVIDER)) {
@@ -39,7 +39,7 @@ public class MainPresenter extends MvpPresenter<MainView> {
         public void onStatusChanged(String provider, int status, Bundle extras) {
 
             if (status != LocationProvider.AVAILABLE) {
-                getViewState().setInfo(mCtx.getString(R.string.system_is_not_available));
+                getViewState().setInfo(mCxtView.getString(R.string.system_is_not_available));
             }
         }
 
@@ -56,17 +56,17 @@ public class MainPresenter extends MvpPresenter<MainView> {
         public void onProviderDisabled(String provider) {
 
             if (provider.equals(LocationManager.GPS_PROVIDER)) {
-                getViewState().setInfo(mCtx.getString(R.string.system_is_not_available));
+                getViewState().setInfo(mCxtView.getString(R.string.system_is_not_available));
             }
         }
     };
 
     public void onClickBtn(final Context context) {
 
-        mCtx = context;
+        mCxtView = context;
 
         if (mLocationManager == null) {
-            mLocationManager = (LocationManager) mCtx.getSystemService(LOCATION_SERVICE);
+            mLocationManager = (LocationManager) mCxtView.getSystemService(LOCATION_SERVICE);
         }
 
         if (!mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
@@ -81,22 +81,26 @@ public class MainPresenter extends MvpPresenter<MainView> {
         }
     }
 
-    private String getStringLocation(final Location location) {
+    String getStringLocation(final Location location) {
 
         if (location == null) {
-            return mCtx.getString(R.string.location_is_not_defined);
+            return mCxtView.getString(R.string.location_is_not_defined);
         }
         float accuracy = location.getAccuracy();
         if (accuracy > 60) {
-            return mCtx.getString(R.string.given_accuracy_is_impossible);
+            return mCxtView.getString(R.string.given_accuracy_is_impossible);
         }
-        String sFormat = mCtx.getString(R.string.position_coordinates) + " "
-                + mCtx.getString(R.string.lat) + " = %1$.4f, "
-                + mCtx.getString(R.string.lon) + " = %2$.4f, "
-                + mCtx.getString(R.string.accuracy) + " = %3$.4f";
+        String sFormat = mCxtView.getString(R.string.position_coordinates) + " "
+                + mCxtView.getString(R.string.lat) + " = %1$.4f, "
+                + mCxtView.getString(R.string.lon) + " = %2$.4f, "
+                + mCxtView.getString(R.string.accuracy) + " = %3$.4f";
         return String.format(sFormat,
                 location.getLatitude(),
                 location.getLongitude(),
                 accuracy);
+    }
+
+    public Context getmCxtView() {
+        return mCxtView;
     }
 }
