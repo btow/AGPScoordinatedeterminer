@@ -109,7 +109,7 @@ public class MainPresenter extends MvpPresenter<MainView> {
             mLocationManager.requestLocationUpdates(
                     LocationManager.GPS_PROVIDER,   //Тип провайдера для определения местоположения
                     1000,                           //Минимальный интервал определения в милисек
-                    0.5f,                           //Минимальное расстояние для переопределения в метрах
+                    3.5f,                           //Минимальное расстояние для переопределения в метрах
                     mLocationListener);             //Слушатель изменения положения
         }
     }
