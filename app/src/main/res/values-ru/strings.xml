@@ -8,4 +8,5 @@
     <string name="position_coordinates">Координаты положения</string>
     <string name="accuracy">точность(м.)</string>
     <string name="settings">Настройки</string>
+    <string name="location_is_not_defined">Местоположение не определено</string>
 </resources>
