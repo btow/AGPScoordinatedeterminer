@@ -1,6 +1,11 @@
 package com.example.samsung.gps_coordinate_determiner.presentation.view.main;
 
+import android.content.Context;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+
 import com.arellomobile.mvp.MvpView;
+import com.example.samsung.gps_coordinate_determiner.ui.activity.main.MainActivity;
 
 /**
  * The Interface MainView to communicate class activity MainActivity
@@ -22,4 +27,5 @@ public interface MainView extends MvpView {
      */
     void setInfo(final String msg);
 
+    void requestPermissions();
 }

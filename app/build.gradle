@@ -37,8 +37,6 @@ android {
         }
         debug {
         }
-        productFlavors {
-        }
     }
     testOptions {
         unitTests {

@@ -9,4 +9,5 @@
     <string name="accuracy">точность(м.)</string>
     <string name="settings">Настройки</string>
     <string name="location_is_not_defined">Местоположение не определено</string>
+    <string name="permission_has_not_been_granted">Разрешение не было предоставлено данному приложению.</string>
 </resources>

@@ -1,10 +1,16 @@
 package com.example.samsung.gps_coordinate_determiner.ui.activity.main;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +25,8 @@ import com.example.samsung.gps_coordinate_determiner.presentation.view.main.Main
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static android.support.v4.app.ActivityCompat.requestPermissions;
 
 /**
  * The class {@code MainActivity} enables the application to interact
@@ -51,6 +59,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends MvpAppCompatActivity implements MainView {
 
     public static final String TAG = "MainActivity";
+    private final int REQUEST_CODE_ASK_PERMISSIONS = 123;
     @InjectPresenter
     MainPresenter mMainPresenter;
 
@@ -105,5 +114,34 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
     @Override
     public void setInfo(final String msg) {
         tvInfo.setText(msg);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    @Override
+    public void requestPermissions() {
+        this.requestPermissions(
+                new String[] {Manifest.permission.ACCESS_FINE_LOCATION},
+                REQUEST_CODE_ASK_PERMISSIONS);
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(
+            int requestCode,
+            @NonNull String[] permissions,
+            @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_CODE_ASK_PERMISSIONS:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    //Permission Granted
+                    mMainPresenter.onClickBtn(getBaseContext());
+                } else {
+                    //Permission Denied
+                    setInfo(getString(R.string.given_accuracy_is_impossible));
+                }
+                break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
     }
 }
