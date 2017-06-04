@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.example.samsung.gps_coordinate_determiner.Messager;
 import com.example.samsung.gps_coordinate_determiner.R;
 import com.example.samsung.gps_coordinate_determiner.presentation.presenter.main.MainPresenter;
 import com.example.samsung.gps_coordinate_determiner.presentation.view.main.MainView;
@@ -114,6 +115,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
     @Override
     public void setInfo(final String msg) {
         tvInfo.setText(msg);
+        Messager.sendToAllRecipients(getBaseContext(), "setInfo(): msg = " + msg);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -122,7 +124,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         this.requestPermissions(
                 new String[] {Manifest.permission.ACCESS_FINE_LOCATION},
                 REQUEST_CODE_ASK_PERMISSIONS);
-
+        Messager.sendToAllRecipients(getBaseContext(), "requestPermissions()");
     }
 
     @Override
@@ -137,11 +139,12 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
                     mMainPresenter.onClickBtn(getBaseContext());
                 } else {
                     //Permission Denied
-                    setInfo(getString(R.string.given_accuracy_is_impossible));
+                    setInfo(getString(R.string.permission_has_not_been_granted));
                 }
                 break;
             default:
                 super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+        Messager.sendToAllRecipients(getBaseContext(), "onRequestPermissionsResult()");
     }
 }
