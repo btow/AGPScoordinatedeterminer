@@ -127,6 +127,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         Messager.sendToAllRecipients(getBaseContext(), "requestPermissions()");
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onRequestPermissionsResult(
             int requestCode,
